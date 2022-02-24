@@ -13,7 +13,6 @@ add.addEventListener('click',()=>{
 })
 
 
-
 // Arrastre y carga del archivo de Imágenes
 
 const inputImage = document.getElementById('input-image');
@@ -103,7 +102,6 @@ inputVideo.addEventListener('change', (e) => {
   const fileVideo = e.target.files[0]
   const fileReaderVideo = new FileReader();
   fileReaderVideo.readAsDataURL(fileVideo);
-
 
 
   fileReaderVideo.addEventListener('progress', (e)=>{
