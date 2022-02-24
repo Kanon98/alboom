@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/styles.min.css">
+  <link rel="stylesheet" href="css/fontello.css">
   <title>Document</title>
   <script src="https://kit.fontawesome.com/2fe60e76a8.js" crossorigin="anonymous"></script>
 </head>
@@ -15,47 +16,91 @@
   </header>
   <main>
     <menu id="menu">
+      <div class="list">
+        <div class="logo">
+          <i class="fa-solid fa-cross"></i>
+        </div>
 
+
+
+
+
+
+
+        <input type="radio" name="radio" checked id="radio-1">
+
+        <div class="my-dashboard">
+          <h4>REALIDAD AUMENTADA</h4>
+          <label for="radio-1" class="subtitle-dashboard">
+            <i id="icon-dashboard" class="fa-solid fa-sim-card"></i>
+            <p>Colecciones AR</p>
+          </label>
+        </div>
+
+        <input type="radio" name="radio"  id="radio-2">
+
+
+        <div class="my-setting">
+          <h4>CONFIGURACIONES</h4>
+          <label for="radio-2" class="subtitle-setting">
+            <i id="icon-setting" class="fa-solid fa-gear"></i>
+            <p>General</p>
+          </label>
+        </div>
+
+
+      </div>
     </menu>
-    <section id="dashboard">
 
+
+
+    <section id="dashboard">
       <div class="message-main">
-        <h2>Colecciones con realidad aumentada</h2>
-        <p>Crea y edita tus colecciones</p>
-        <button>Nueva colección</button>
+        <div class="text-collection">
+          <h2>Colecciones con realidad aumentada</h2>
+          <p>Crea y edita tus colecciones</p>
+        </div>
+        <div class="button-container">
+          <button class="button">Nueva colección</button>
+        </div>
+
       </div>
 
       <div class="message-collection">
-        <p>Aún no tienes una colección.</p>
+          <i class="fa-solid fa-video"></i>
+          <p>Aún no tienes una colección.</p>
         <button id="add-colecction">Nueva colección</button>
       </div>
 
       <form id="new-collection" enctype="multipart/form-data">
-
         <div class="header-new-colection">
+          <h2>Colecciones AR <span class="span-icon">&#62;</span> <span class="span-text">Nueva colección</span> </h2>
+          <button class="terminar" type="submit">Terminar</button>
           <label class="label-title" for="title">Título de la colección</label>
           <input id="title" type="text">
         </div>
 
         <div class="drop-zone">
-          <h3>Nueva Experiencia de AR</h3>
+          <p>Nueva Experiencia de AR</p>
 
           <div id="drop-image">
             <i class="far fa-image"></i>
             <input type="file" id="input-image">
             <p>Haga clic <br> o<br> arrastre la imagen aquí</p>
 
-            <img id="thumb-image"alt="">
 
             <div class="loadbar-image">
               <div class="circular-progress-image">
               <p class="percentage-image"></p>
               </div>
             </div>
+
+            <img id="thumb-image"alt="">
+
           </div>
 
           <div class="arrow">
-            <i class="fa-solid fa-arrow-down"></i>
+            <i class="icon-arrow"></i>
           </div>
 
 
@@ -64,7 +109,6 @@
             <input type="file" id="input-video">
             <p>Haga clic <br>o<br> arrastre el vídeo aquí</p>
 
-            <video id="thumb-video" type="video/mp4">
 
             <div class="loadbar-video">
               <div class="circular-progress-video">
@@ -72,7 +116,7 @@
               </div>
             </div>
 
-
+            <video id="thumb-video" type="video/mp4">
 
         </div>
 
