@@ -1,4 +1,4 @@
-// Agregar nueva colección
+// Mostrar nueva colección
 
 const add = document.getElementById('add-colecction');
 const newCollection = document.getElementById('new-collection')
@@ -18,9 +18,18 @@ add.addEventListener('click',()=>{
 const inputImage = document.getElementById('input-image');
 const dropImage = document.getElementById('drop-image');
 
-dropImage.addEventListener('click', ()=> {
-  inputImage.click()
-});
+let clickImage = ()=> {
+   dropImage.addEventListener('click', ()=> {
+   inputImage.click()
+  }
+)}
+
+
+clickImage();
+
+// dropImage.addEventListener('click', ()=> {
+//   inputImage.click()
+// });
 
 dropImage.addEventListener('dragover',(e)=> {
   e.preventDefault()
@@ -42,39 +51,66 @@ inputImage.addEventListener('change', (e) => {
 })
 
 
+ // Carga de archivos de Imágenes
+
 let progressBarImage = document.querySelector('.circular-progress-image');
 let percentageImage = document.querySelector('.percentage-image');
 const loadbarImage = document.querySelector('.loadbar-image');
+const searchImage = document.getElementById('search-image')
+const modal = document.getElementById('modal')
+const modalImage = document.getElementById('modal-image')
 
 inputImage.addEventListener('change', (e) => {
-  loadbarImage.classList.add('traslate-loadbar--image')
+
   console.log(inputImage.files)
   const file = e.target.files[0]
   const fileReader = new FileReader();
   fileReader.readAsDataURL(file)
   fileReader.addEventListener('progress', (e)=>{
     let loaded = parseInt(e.loaded * 100 / e.total);
-    percentageImage.textContent = `${loaded}%`;
-    progressBarImage.style.background = `conic-gradient(
-      #45ae70 ${loaded * 3.6}deg,
-      #cadcff ${loaded * 3.6}deg
-    )`
+    let width = loaded * 0.8;
+    progressBarImage.style.width = width + '%';
   })
-  fileReader.addEventListener('load',(e)=>{
+  fileReader.addEventListener('loadend',(e)=>{
+    loadbarImage.classList.add('traslate-loadbar--image')
     const thumb = document.getElementById('thumb-image')
-    thumb.classList.add('z-index')
+    thumb.style.visibility = "visible";
     thumb.setAttribute('src', e.target.result)
+    searchImage.classList.add('search-view')
+    searchImage.addEventListener('mouseenter',()=>{
+    thumb.classList.add('emergency')
+    })
+    searchImage.addEventListener('mouseleave',()=>{
+    thumb.classList.remove('emergency')
+    })
+
+
+    clickImage = function(){};
+
+    //dropImage.removeEventListener('click',clickImage)
+
+
+
+
+
+    searchImage.addEventListener('click',()=>{
+      modal.classList.add('modal-show')
+      e.preventDefault();
+    })
   })
 })
 
-// Arrastre y carga de archivos de vídeo
+
+
+
+
+
+
+// Arrastre de archivos de vídeo
 
 const inputVideo = document.getElementById('input-video');
 const dropVideo = document.getElementById('drop-video');
-const loadbarVideo = document.querySelector('.loadbar-video');
 
-let progressBarVideo = document.querySelector('.circular-progress-video')
-let percentageVideo = document.querySelector('.percentage-video')
 
 dropVideo.addEventListener('click', ()=> {
   inputVideo.click()
@@ -97,11 +133,19 @@ dropVideo.addEventListener('drop', (e) => {
   console.log(file)
 })
 
+ // Carga de archivos de vídeo
+
+ const loadbarVideo = document.querySelector('.loadbar-video');
+
+ let progressBarVideo = document.querySelector('.circular-progress-video')
+ let percentageVideo = document.querySelector('.percentage-video')
+
 inputVideo.addEventListener('change', (e) => {
   loadbarVideo.classList.add('traslate-loadbar--video')
   const fileVideo = e.target.files[0]
   const fileReaderVideo = new FileReader();
   fileReaderVideo.readAsDataURL(fileVideo);
+  console.log(inputVideo.value)
 
 
   fileReaderVideo.addEventListener('progress', (e)=>{
@@ -119,3 +163,16 @@ inputVideo.addEventListener('change', (e) => {
     thumb.setAttribute('controls', e.target.result)
   })
 })
+
+// Enviar formulario
+
+const terminar = document.querySelector('.terminar')
+const wrong = document.querySelector('.wrong');
+
+let showWrong = ()=>{
+  wrong.classList.add('wrong--visible')
+}
+
+terminar.addEventListener('click',showWrong);
+
+// Agregar nuevo formulario
